@@ -1,8 +1,11 @@
 package jp.ginyolith.sandbox
 
+import android.view.View
 import org.junit.Test
 
-import org.junit.Assert.*
+import org.assertj.android.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Condition
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -12,6 +15,11 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        assertThat("hoge")
+                .`as`("ホゲをテストします")
+                .isEqualTo("hoge")
+                .contains("og")
+                .doesNotContain("123")
+                .hasLineCount(2)
     }
 }
