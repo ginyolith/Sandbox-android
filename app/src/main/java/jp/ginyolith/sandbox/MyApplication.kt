@@ -7,12 +7,6 @@ import com.amazonaws.mobile.auth.core.IdentityManager
 import com.amazonaws.mobile.config.AWSConfiguration
 import com.amazonaws.mobileconnectors.pinpoint.PinpointConfiguration
 import com.amazonaws.mobileconnectors.pinpoint.PinpointManager
-import com.amazonaws.mobileconnectors.pinpoint.targeting.endpointProfile.EndpointProfileUser
-import com.google.firebase.FirebaseApp
-import java.util.*
-import com.amazonaws.mobile.client.AWSMobileClient
-
-
 
 
 class MyApplication : Application() {
@@ -21,9 +15,6 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-//        // firebase設定
-//        FirebaseApp.initializeApp(this)
-
         val awsConfiguration = AWSConfiguration(this)
 
         if (IdentityManager.getDefaultIdentityManager() == null) {
