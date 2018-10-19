@@ -9,6 +9,7 @@ import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.Button
 import com.amazonaws.auth.AWSCredentialsProvider
 import com.amazonaws.mobile.auth.core.IdentityHandler
 import com.amazonaws.mobile.auth.core.IdentityManager
@@ -82,6 +83,7 @@ class MainActivity : AppCompatActivity() {
         pinpointManager?.targetingClient?.addAttribute("Interests", interestsList)
         pinpointManager?.targetingClient?.updateEndpointProfile()
 
+
         // ユーザーIDをエンドポイントに割り当てる
         val endpointProfile = pinpointManager?.targetingClient?.currentEndpoint()
         val user = EndpointProfileUser()
@@ -92,6 +94,17 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize PinpointManager
         getPinpointManager(applicationContext)
+
+
+        findViewById<Button>(R.id.button_send_ev).setOnClickListener {
+            val event = pinpointManager?.analyticsClient?.createEvent("clickEvButton")
+                    ?.withAttribute("numata","ph")
+                    ?.withAttribute("akagi","ks")
+                    ?.withMetric("metric", Math.random())
+
+            pinpointManager?.analyticsClient?.recordEvent(event)
+            pinpointManager?.analyticsClient?.submitEvents()
+        }
     }
 
     override fun onPause() {
