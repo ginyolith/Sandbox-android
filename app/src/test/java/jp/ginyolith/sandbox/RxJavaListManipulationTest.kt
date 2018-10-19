@@ -52,6 +52,7 @@ class RxJavaListManipulationTest {
                 .build().create(TestService::class.java)
 
         val observable = service.get()
+
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.single())
