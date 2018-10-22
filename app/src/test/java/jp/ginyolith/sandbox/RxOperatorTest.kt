@@ -388,6 +388,5 @@ class RxOperatorTest {
                 .subscribe(DebugSubscriber())
 
         Thread.sleep(5000L)
-
     }
 }
